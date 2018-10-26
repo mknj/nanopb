@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package bender;
+
+message removeevent {
+}
+message propertyevent {
+  oneof one {
+    bool boolValue = 3;
+    int32 intValue = 4;
+    string stringValue = 5;
+  }
+}
+message textevent {
+  string value = 3; /// Der neue Text
+}
+message measurementevent {
+  float value = 14;
+  int32 alarm = 15;
+  int32 accessmode = 3;
+  int32 channel = 4;
+  int32 description = 5;
+  int32 descriptionindex = 6;
+  int32 position = 7;
+  int32 positionindex = 8;
+  bool ebool = 9;
+  int32 eint = 10;
+  int32 unit = 11;
+  int32 range = 12;
+  int32 test = 13;
+}
+
+/// Ereignisse haben immer eine Adresse(Topic) und einen Zeitpunkt(time)
+message event { 
+  int32 typ = 1;     /// könnte genutzt werden, um anhand eine generischen Parsers den Typ der Nachricht zu bestimmen, Eine API kann kontrollieren, ob die Nachricht den richtigen Typ hat 
+  int32 version = 2; /// es wäre möglich, verschiedene Clients, die unterschiedliche API Versionen unterstützen zu verwenden
+  string topic = 3;  /// Wegbeschreibung zu dem auslösenden Objekt
+  double time = 4;   /// Zeit, wann das Ereignis stattgefunden hat
+  oneof one {
+    propertyevent property = 5;
+    textevent text = 6;
+    measurementevent measurement = 7; 
+    removeevent remove = 8;
+  }
+}
+

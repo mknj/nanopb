@@ -1,0 +1,3 @@
+bender.propertyevent.stringValue type:FT_POINTER;
+bender.textevent.value type:FT_POINTER;
+bender.event.topic type:FT_POINTER;
