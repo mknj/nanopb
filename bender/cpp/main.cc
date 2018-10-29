@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
   bender::event e;
   char buffer[1024];
-  fstream input("../events.pb.stream", ios::in | ios::binary);
+  fstream input("../sample.events.pb.stream", ios::in | ios::binary);
   while(input)
   {
           size_t len=readlen(&input);
